@@ -8,7 +8,7 @@ export default function BlogPage() {
   const posts = allPosts;
 
   return (
-    <div className="container max-w-4xl py-6 lg:py-10">
+    <div className="container max-w-4xl py-6 lg:py-10 px-10">
       <div>
         <div className="space-y-4">
           <h1 className="font-extrabold text-4xl lg:text-5xl tracking-tight">Blog🚀</h1>
@@ -16,8 +16,9 @@ export default function BlogPage() {
         </div>
       </div>
       <hr className="my-8" />
+      <div className="grid sm:grid-cols-2 gap-10">
       {posts.map((post) => (
-        <article key={post._id}>
+        <article key={post._id} className="relative flex flex-col space-y-2">
           {post.image && (
             <Image
               src={post.image}
@@ -36,9 +37,10 @@ export default function BlogPage() {
               {format(post.date, "yyyy/MM/dd")}
             </p>
           )}
-            <Link href={post.slug}>記事を見る</Link>
+            <Link href={post.slug} className="absolute inset-0" />
         </article>
       ))}
+      </div>
     </div>
   )
 };
